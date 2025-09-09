@@ -1,0 +1,35 @@
+name: Secret Scan
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Install git-secrets
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git
+          git clone https://github.com/awslabs/git-secrets.git
+          cd git-secrets && sudo make install
+
+      
+      - name: Configure git-secrets
+        run: |
+          git secrets --register-aws
+          git secrets --add 'AKIA[0-9A-Z]{16}'   
+          git secrets --add 'ASIA[0-9A-Z]{16}'   
+          git secrets --add '(?i)secret'         
+          git secrets --add 'password'
+          git secrets --add 'token'
+
+    
+      - name: Run secret scan
+        run: |
+          git secrets --scan
