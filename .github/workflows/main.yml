@@ -36,4 +36,4 @@ jobs:
     needs: secret-scan  
     steps:
       - name: Build Docker image
-        run: ocker build -t sample-python-app -f python-app/Dockerfile python-app/ .
+        run: docker build -t sample-python-app -f python-app/Dockerfile python-app/ .
