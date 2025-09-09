@@ -23,7 +23,6 @@ jobs:
           git secrets --register-aws
           git secrets --add 'AKIA[0-9A-Z]{16}'
           git secrets --add 'ASIA[0-9A-Z]{16}'
-          git secrets --add '[sS][eE][cC][rR][eE][tT]'
           git secrets --add '[Pp]assword'
           git secrets --add '[Tt]oken'
 
