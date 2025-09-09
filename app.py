@@ -1,7 +1,6 @@
 from flask import Flask
 
 app = Flask(__name__)
-token="akjbmpkmcpwj39932i920jj092e22j233jm"
 
 @app.route("/")
 def home():
