@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Installing Sonarless..."
+      - pip install sonarless
+  pre_build:
+    commands:
+      - echo "Checking Python version..."
+      - python --version
+      - echo "Sonarless version..."
+      - sonarless --version
+  build:
+    commands:
+      - echo "Running Sonarless scan on full repo..."
+      - sonarless scan . --json sonarless-report.json --html sonarless-report.html
+  post_build:
+    commands:
+      - echo "Sonarless scan completed on `date`"
+
+artifacts:
+  files:
+    - '**/*'
