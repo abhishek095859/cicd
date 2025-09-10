@@ -3,7 +3,7 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route("/")
-abhi='ASIAYYMYGL3JBXTDTJ4M'
+
 def home():
     return "Hello from CI Pipeline with Docker!"
 
