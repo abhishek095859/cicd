@@ -6,8 +6,7 @@ phases:
       python: 3.9
     commands:
       - echo "Installing Sonarless..."
-      - pip install sonarless
-  pre_build:
+      - pip install git+https://github.com/<org>/sonarless.git  pre_build:
     commands:
       - echo "Checking Python version..."
       - python --version
